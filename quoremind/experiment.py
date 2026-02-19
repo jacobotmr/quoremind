@@ -1,6 +1,6 @@
 
 import numpy as np
-from main import run_quoremind_simulation
+from .cli import run_quoremind_simulation
 
 # Configuración solicitada por el usuario
 PRN_INFLUENCE = 0.72

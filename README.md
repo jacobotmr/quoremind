@@ -30,6 +30,7 @@ Donde $\{, \}$ representa el corchete de Poisson y $[, ]_M$ representa la intera
 ## 🧬 Analogía Rigurosa
 
 QuoreMind implementa el **Nivel 3 de Isomorfismo Físico Operacional**, permitiendo la transferencia de intuición entre:
+
 * **Dinámica de Fluidos**: Viscosidad e Inercia.
 * **Información Cuántica**: Decoherencia (Lindblad) y Dinámica Unitaria (Schrödinger).
 
@@ -37,18 +38,41 @@ QuoreMind implementa el **Nivel 3 de Isomorfismo Físico Operacional**, permitie
 
 ### Instalación
 
-Asegúrate de tener instaladas las dependencias científicas base:
+Puedes instalar QuoreMind directamente desde el código fuente o mediante pip una vez publicado:
 
 ```bash
-pip install numpy scipy
+pip install quoremind
 ```
 
-### Ejecutar Demo Integrada
-
-El archivo `quoremind.py` contiene una demo completa de optimización y evolución metripléctica:
+Para desarrollo local:
 
 ```bash
-python quoremind.py
+git clone https://github.com/jacobotmr/quoremind.git
+cd quoremind
+pip install -e .
+```
+
+### Uso como Framework
+
+Ahora puedes importar los componentes de QuoreMind en tus propios proyectos:
+
+```python
+from quoremind import QuantumNoiseCollapse, run_quoremind_simulation
+
+# Ejecutar una simulación rápida
+results = run_quoremind_simulation(
+    prn_influence=0.72,
+    learning_rate=0.01,
+    target_state=[1, 6, 6, 1]
+)
+```
+
+### Interfaz de Línea de Comandos (CLI)
+
+QuoreMind incluye una herramienta de CLI para ejecutar simulaciones rápidamente:
+
+```bash
+quoremind --prn 0.72 --lr 0.01 --iterations 100 --target 1 6
 ```
 
 ## 🧪 Verificación (Pytest)

@@ -1,7 +1,6 @@
-
 import pytest
 import numpy as np
-from main import run_quoremind_simulation
+from quoremind import run_quoremind_simulation
 
 def test_run_simulation_custom_params():
     """

@@ -1,7 +1,7 @@
 
 import numpy as np
 import argparse
-from quoremind import (
+from .core import (
     QuantumNoiseCollapse,
     VonNeumannEntropy,
     lambda_doble_operator
