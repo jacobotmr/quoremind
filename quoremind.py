@@ -423,8 +423,7 @@ class QuantumBayesMahalanobis(BayesLogic):
         inv_cov = self._empirical_inv_cov(quantum_states_A)
         mean_A  = np.mean(quantum_states_A, axis=0)
         diff    = quantum_states_B - mean_A
-        aux     = diff @ inv_cov
-        return np.sqrt(np.einsum("ij,ij->i", aux, diff))
+        return np.sqrt(np.einsum("ni,ij,nj->n", diff, inv_cov, diff))
 
     def quantum_cosine_projection(
         self,
@@ -539,8 +538,7 @@ class EnhancedPRN(PRN):
         mean_state = np.mean(quantum_states, axis=0)
 
         diff    = quantum_states - mean_state
-        aux     = diff @ inv_cov
-        dist_sq = np.einsum("ij,ij->i", aux, diff)
+        dist_sq = np.einsum("ni,ij,nj->n", diff, inv_cov, diff)
         mahal   = float(np.mean(np.sqrt(dist_sq)))
 
         self.mahalanobis_records.append(mahal)
@@ -866,6 +864,6 @@ if __name__ == "__main__":
 ✓ Bayesiana: posterior={res['bayesian_posterior']:.4f} | acción={'ACEPTAR' if res['action'] else 'BLOQUEAR'}
 ✓ Optimización: mejora={init_obj - final_obj:.4f} en 50 iteraciones
 """)
-    print("=" * 80)
-    print("✅ QuoreMind v1.0.0 — Análisis completo (sin TensorFlow)")
-    print("=" * 80)
+print("=" * 80)
+print("✅ QuoreMind v1.0.0 — Análisis completo (sin TensorFlow)")
+print("=" * 80)
